@@ -4,21 +4,120 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="./css/stripe.css"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="./js/Tone.min.js"></script>
   </head>
-  <body>
-    <div class="vh-100 dt w-100">
-      <div class="dtc v-mid tc w-50 bg-blue yellow">
-	<h1 class="f6 f3-ns">
-	  ///공사중///
+  <body class="bg-light-blue">
+
+    <script>
+     /* init scripts ? */
+     $( document ).ready(function() { });
+    </script>
+    
+    <!-- entry page -->
+    
+    <div id="entry" class="dt vh-100 w-100 absolute top-0 left-0">
+      <div class="f6 f3-ns dtc v-mid tc bg-hot-pink light-yellow">
+	<svg width="100" height="100">
+	  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+	  Sorry, your browser does not support inline SVG.
+	</svg>
+	<h2>
+	  손에 폰 잡고
+	</h2>
+      </div>
+      <div class="f6 f3-ns dtc v-mid tc w-50 bg-lightest-blue hot-pink">
+	<h2>
+	  Phone in hand
+	</h2>
+      </div>
+    </div>
+    <script>
+     // page transition
+     $("#entry").click(function() {
+       $(this).fadeOut(500);
+       $("#page1").fadeIn(500);
+       //alternative way 1
+       /* $(this).fadeOut(500, function() {
+	  $("#page1").fadeIn(500);
+	* });*/
+       //alternative way 2
+       /* $(this).fadeToggle("slow", "linear");
+	* $("#page1").fadeToggle("slow", "linear");*/
+     });
+    </script>
+
+    <!-- page 1 -->
+    
+    <!-- hiden with inline style / will be shown by jquery -->
+    <div id="page1" class="dt vh-100 w-100 absolute top-0 left-0" style="display:none">
+      <div id="page1-left" class="dtc v-mid tc bg-yellow blue">
+	<h1 id="page1-msg" class="f6 f3-ns">
+	  소리 번호를 골라주세요.
 	</h1>
       </div>
-      <div class="dtc v-mid tc w-50 bg-yellow blue">
+      <div class="dtc v-mid tc w-50 bg-blue yellow">
 	<h1 class="f6 f3-ns">
-	  ...under-construction...
+	  <form id="form1">
+	    <input class="w-80 br-pill yellow bg-blue ba b--dashed b--yellow fw6 f3 f1-ns lh-copy tc mv2" type="text" name="seat-no" autofocus>
+	    <input class="w-80 br-pill yellow bg-dark-blue bn b fw6 f4 f2-ns pv2" type="submit" value="선택">
+	  </form>
 	</h1>
       </div>
     </div>
+    <script>
+     $("#form1").submit(function(event) {
+       event.preventDefault(); // to stop refreshing.. (actual submit action)
+       
+       // //Loading..
+       //$("#page1-left").removeClass("bg-yellow blue").addClass("bg-purple white-70");
+       //$("#page1-msg").removeClass("f6 f3-ns").addClass("f4 f2-ns");
+       //$("#page1-msg").text("다운로드 중..");
+
+       //go to Loading page...
+       $("#page1").hide();
+       $("#loading").show();
+
+       //load data
+       reserveseat();
+     });
+    </script>
+    
+    <!-- loading -->
+    
+    <!-- hiden with inline style / will be shown by jquery -->
+    <div id="loading" class="dt vh-100 w-100 absolute top-0 left-0 animationStripes" style="display:none">
+      <div class="dtc v-mid tc white">
+	<h1 class="f3 f1-ns">
+	  Loading..........!?
+	</h1>
+      </div>
+    </div>
+    <script>
+     var player1;
+     function reserveseat()
+     {
+       player1 = new Tone.Player({ "url" : "./audio/01.mp3" }).toMaster();
+       Tone.Buffer.on("load", function(){
+	 $("#loading").fadeOut(500);
+	 $("#page2").fadeIn(500);
+       }.bind(this)); //-->resolve scoping issues.. : https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/
+     }
+    </script>
+    
+    <!-- page 2 -->
+    
+    <!-- hiden with inline style / will be shown by jquery -->
+    <div id="page2" class="dt vh-100 w-100 absolute top-0 left-0" style="display:none">
+      <div class="dtc v-mid tc light-green bg-dark-blue">
+	<h1 class="f3 f1-ns">
+	  page 2
+	</h1>
+      </div>
+    </div>
+    <script>
+    </script>
+    
   </body>
 </html>
