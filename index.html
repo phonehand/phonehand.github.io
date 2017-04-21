@@ -7,19 +7,15 @@
     <link rel="stylesheet" href="./css/stripe.css"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="./js/Tone.min.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
   </head>
   <body class="bg-light-blue">
 
-    <script>
-     /* init scripts ? */
-     $( document ).ready(function() { });
-    </script>
-    
     <!-- entry page -->
     
     <div id="entry" class="dt vh-100 w-100 absolute top-0 left-0">
       <div class="f6 f3-ns dtc v-mid tc bg-hot-pink light-yellow">
-	<svg width="100" height="100">
+	<svg width="100" height="100" viewbox="0 0 100 100">
 	  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
 	  Sorry, your browser does not support inline SVG.
 	</svg>
@@ -33,20 +29,6 @@
 	</h2>
       </div>
     </div>
-    <script>
-     // page transition
-     $("#entry").click(function() {
-       $(this).fadeOut(500);
-       $("#page1").fadeIn(500);
-       //alternative way 1
-       /* $(this).fadeOut(500, function() {
-	  $("#page1").fadeIn(500);
-	* });*/
-       //alternative way 2
-       /* $(this).fadeToggle("slow", "linear");
-	* $("#page1").fadeToggle("slow", "linear");*/
-     });
-    </script>
 
     <!-- page 1 -->
     
@@ -66,23 +48,6 @@
 	</h1>
       </div>
     </div>
-    <script>
-     $("#form1").submit(function(event) {
-       event.preventDefault(); // to stop refreshing.. (actual submit action)
-       
-       // //Loading..
-       //$("#page1-left").removeClass("bg-yellow blue").addClass("bg-purple white-70");
-       //$("#page1-msg").removeClass("f6 f3-ns").addClass("f4 f2-ns");
-       //$("#page1-msg").text("다운로드 중..");
-
-       //go to Loading page...
-       $("#page1").hide();
-       $("#loading").show();
-
-       //load data
-       reserveseat();
-     });
-    </script>
     
     <!-- loading -->
     
@@ -94,17 +59,6 @@
 	</h1>
       </div>
     </div>
-    <script>
-     var player1;
-     function reserveseat()
-     {
-       player1 = new Tone.Player({ "url" : "./audio/01.mp3" }).toMaster();
-       Tone.Buffer.on("load", function(){
-	 $("#loading").fadeOut(500);
-	 $("#page2").fadeIn(500);
-       }.bind(this)); //-->resolve scoping issues.. : https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/
-     }
-    </script>
     
     <!-- page 2 -->
     
@@ -116,8 +70,6 @@
 	</h1>
       </div>
     </div>
-    <script>
-    </script>
     
   </body>
 </html>
