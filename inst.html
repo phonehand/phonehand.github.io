@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- dependencies -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/Tone.min.js"></script>
+    <script type="text/javascript" src="bower_components/osc.js/dist/osc-browser.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="css/stripe.css"/>
+    <!-- js code -->
+    <script type="text/javascript" src="js/script.js"></script>
+  </head>
+
+
+  <!-- <a href="#">
+       <svg width="5em" viewbox="0 0 100 100">
+       <circle cx="50" cy="50" r="40" stroke="blue" stroke-width="5" fill="yellow" />
+       </svg> -->
+
+
+  <body class="bg-light-blue">
+
+    <!-- landing page -->
+    <div id="landing" class="dt vh-100 w-100 absolute top-0 left-0" style="background-image: repeating-linear-gradient(-25deg, yellow, yellow 5em, chartreuse 5em, chartreuse 10em);">
+      <div class="dtc v-mid tc w-100">
+	<img src="imgs/phonehand.png" />
+	<div class="w-100 pv3">
+	  <a id="alink-start" href="#" class="fw6 f3 pv3 ph2 br-pill no-underline" style="color:chartreuse;background-color:black" onclick="javascript:$('#landing').fadeOut(500);$('#whoareyou').fadeIn(500);">
+	    Start!
+	  </a>
+	</div>
+      </div>
+    </div>
+
+    <!-- whoareyou page -->
+    <div id="whoareyou" class="vh-100 w-100 absolute top-0 left-0 bg-hot-pink" style="display:none">
+      <div class="mw7 center min-h-100 h-auto flex flex-wrap flex-column justify-around items-center">
+	<div class="h1 flex-auto"></div><!-- gap -->
+	<div class="h2 flex-auto ph3 pv3 f3">
+	  워크숍 참가 후, 퍼포먼스를 하는 경우 아래 버튼을 눌러 스타-트!
+	</div>
+	<div class="h2 flex-auto">
+	  <div class="br-100 h4 w4 center ph3 flex flex-column items-center justify-center f4 fw6" style="background-image: repeating-radial-gradient(circle, yellow 5px, springgreen 10px, chartreuse 15px);">
+	    <div class="w-100 tc">웍샵</div>
+	    <div class="w-100 tc">참가자</div>
+	  </div>
+	</div>
+	<div class="h3 flex-auto"></div><!-- gap -->
+	<div class="h2 flex-auto ph3 pv3 f3">
+	  미술관 내에서 지나가다 접속하신 분은, 아래 버튼을 눌러 스타-트!
+	</div>
+	<div class="h2 flex-auto">
+	  <div class="br-100 h4 w4 center ph3 flex flex-column items-center justify-center f4 fw6" style="background-image: repeating-radial-gradient(circle, yellow 5px, cyan 10px, lightgreen 15px);">
+	    <div>현장</div>
+	    <div>참가자</div>
+	  </div>
+	</div>
+	<div class="h3 flex-auto"></div><!-- gap -->
+      </div>
+    </div>
+
+    <!--  -->
+
+    <div class="dt vh-100 w-100 absolute top-0 left-0" style="display:none">
+      <div class="f6 f3-ns dtc v-mid tc bg-hot-pink light-yellow">
+	<svg width="100" height="100" viewbox="0 0 100 100" onclick='javascript:$("svg circle").attr("r", 10);'>
+	  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+	  Sorry, your browser does not support inline SVG.
+	</svg>
+	<h2>
+	  손에 폰 잡고
+	</h2>
+      </div>
+      <div class="f6 f3-ns dtc v-mid tc w-50 bg-lightest-blue hot-pink">
+	<h2>
+	  Phone in hand
+	  <div id="rollcnt"></div>
+	</h2>
+	<a href="#" id="entry">NEXT</a>
+      </div>
+    </div>
+
+    <!-- page 1 -->
+    
+    <!-- hiden with inline style / will be shown by jquery -->
+    <div id="page1" class="dt vh-100 w-100 absolute top-0 left-0" style="display:none">
+      <div id="page1-left" class="dtc v-mid tc bg-yellow blue">
+	<h1 id="page1-msg" class="f6 f3-ns">
+	  소리 번호를 골라주세요.
+	</h1>
+      </div>
+      <div class="dtc v-mid tc w-50 bg-blue yellow">
+	<h1 class="f6 f3-ns">
+	  <form id="form1">
+	    <input class="w-80 br-pill yellow bg-blue ba b--dashed b--yellow fw6 f3 f1-ns lh-copy tc mv2" type="text" name="seat-no" autofocus>
+	    <input class="w-80 br-pill yellow bg-dark-blue bn b fw6 f4 f2-ns pv2" type="submit" value="선택">
+	  </form>
+	</h1>
+      </div>
+    </div>
+    
+    <!-- loading -->
+    
+    <!-- hiden with inline style / will be shown by jquery -->
+    <div id="loading" class="dt vh-100 w-100 absolute top-0 left-0 animationStripes" style="display:none">
+      <div class="dtc v-mid tc white">
+	<h1 class="f3 f1-ns">
+	  Loading..........!?
+	</h1>
+      </div>
+    </div>
+    
+    <!-- page 2 -->
+    
+    <!-- hiden with inline style / will be shown by jquery -->
+    <div id="page2" class="dt vh-100 w-100 absolute top-0 left-0" style="display:none">
+      <div class="dtc v-mid tc light-green bg-dark-blue">
+	<h1 class="f3 f1-ns">
+	  page 2
+	</h1>
+      </div>
+    </div>
+    
+  </body>
+</html>

@@ -2,6 +2,27 @@
 
 $( document ).ready(function() {
 
+    // connect server
+    var oscPort = new osc.WebSocketPort({
+	url: "ws://52.78.239.112:5300", // amazonaws ec2 node.js server
+	metadata: true
+    });
+
+    oscPort.open();
+
+    oscPort.on("ready", function () {
+	oscPort.on("message", function (oscMsg) {
+	    if (oscMsg.address == "/rollcnt") $("#rollcnt").text(oscMsg.args[0].value); // dim led?
+	});
+
+	// var tid = setInterval(function () {
+	    oscPort.send({
+		address: "/occupy",
+		args: [{ type: "f", value: 10 }]
+	    });
+	// }, 500);
+    });
+
     // entry page
     
     $("#entry").click(function() {
