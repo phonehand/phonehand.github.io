@@ -13,89 +13,27 @@
     <script type="text/javascript" src="js/script.js"></script>
   </head>
 
-
   <!-- <a href="#">
        <svg width="5em" viewbox="0 0 100 100">
        <circle cx="50" cy="50" r="40" stroke="blue" stroke-width="5" fill="yellow" />
        </svg> -->
 
-
   <body class="bg-light-blue">
 
-    <!-- landing page -->
-    <div id="landing" class="dt vh-100 w-100 absolute top-0 left-0" style="background-image: repeating-linear-gradient(-25deg, yellow, yellow 5em, chartreuse 5em, chartreuse 10em);">
-      <div class="dtc v-mid tc w-100">
-	<img src="imgs/phonehand.png" />
-	<div class="w-100 pv3">
-	  <a id="alink-start" href="#" class="fw6 f3 pv3 ph2 br-pill no-underline" style="color:chartreuse;background-color:black" onclick="javascript:$('#landing').fadeOut(500);$('#whoareyou').fadeIn(500);">
-	    Start!
-	  </a>
-	</div>
-      </div>
-    </div>
-
-    <!-- whoareyou page -->
-    <div id="whoareyou" class="vh-100 w-100 absolute top-0 left-0 bg-hot-pink" style="display:none">
-      <div class="mw7 center min-h-100 h-auto flex flex-wrap flex-column justify-around items-center">
-	<div class="h1 flex-auto"></div><!-- gap -->
-	<div class="h2 flex-auto ph3 pv3 f3">
-	  워크숍 참가 후, 퍼포먼스를 하는 경우 아래 버튼을 눌러 스타-트!
-	</div>
-	<div class="h2 flex-auto">
-	  <div class="br-100 h4 w4 center ph3 flex flex-column items-center justify-center f4 fw6" style="background-image: repeating-radial-gradient(circle, yellow 5px, springgreen 10px, chartreuse 15px);">
-	    <div class="w-100 tc">웍샵</div>
-	    <div class="w-100 tc">참가자</div>
+    <!-- reserve seat page -->
+    <div id="resvseat" class="dt vh-100 w-100 absolute top-0 left-0 bg-light-blue">
+      <div class="dtc v-mid tc w-50 bg-yellow blue">
+	<h1 class="flex flex-column justify-center items-center f4 f3-ns">
+	  <div class="pv3 lh-copy w-70">
+	    바닥에 부착된 원을 하나 고른 후, 원 안에 서 주시고, 원의 번호를 입력해 주세요.
 	  </div>
-	</div>
-	<div class="h3 flex-auto"></div><!-- gap -->
-	<div class="h2 flex-auto ph3 pv3 f3">
-	  미술관 내에서 지나가다 접속하신 분은, 아래 버튼을 눌러 스타-트!
-	</div>
-	<div class="h2 flex-auto">
-	  <div class="br-100 h4 w4 center ph3 flex flex-column items-center justify-center f4 fw6" style="background-image: repeating-radial-gradient(circle, yellow 5px, cyan 10px, lightgreen 15px);">
-	    <div>현장</div>
-	    <div>참가자</div>
-	  </div>
-	</div>
-	<div class="h3 flex-auto"></div><!-- gap -->
-      </div>
-    </div>
-
-    <!--  -->
-
-    <div class="dt vh-100 w-100 absolute top-0 left-0" style="display:none">
-      <div class="f6 f3-ns dtc v-mid tc bg-hot-pink light-yellow">
-	<svg width="100" height="100" viewbox="0 0 100 100" onclick='javascript:$("svg circle").attr("r", 10);'>
-	  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-	  Sorry, your browser does not support inline SVG.
-	</svg>
-	<h2>
-	  손에 폰 잡고
-	</h2>
-      </div>
-      <div class="f6 f3-ns dtc v-mid tc w-50 bg-lightest-blue hot-pink">
-	<h2>
-	  Phone in hand
-	  <div id="rollcnt"></div>
-	</h2>
-	<a href="#" id="entry">NEXT</a>
-      </div>
-    </div>
-
-    <!-- page 1 -->
-    
-    <!-- hiden with inline style / will be shown by jquery -->
-    <div id="page1" class="dt vh-100 w-100 absolute top-0 left-0" style="display:none">
-      <div id="page1-left" class="dtc v-mid tc bg-yellow blue">
-	<h1 id="page1-msg" class="f6 f3-ns">
-	  소리 번호를 골라주세요.
 	</h1>
       </div>
       <div class="dtc v-mid tc w-50 bg-blue yellow">
 	<h1 class="f6 f3-ns">
-	  <form id="form1">
-	    <input class="w-80 br-pill yellow bg-blue ba b--dashed b--yellow fw6 f3 f1-ns lh-copy tc mv2" type="text" name="seat-no" autofocus>
-	    <input class="w-80 br-pill yellow bg-dark-blue bn b fw6 f4 f2-ns pv2" type="submit" value="선택">
+	  <form id="selseat">
+	    <input class="w-80 br-pill yellow bg-blue ba b--dashed b--yellow fw6 f3 f1-ns lh-copy tc mv2" type="text" name="seatNo" autofocus>
+	    <input class="w-80 br-pill yellow bg-dark-blue bn b fw6 f4 f2-ns pv2" type="submit" value="다-음!">
 	  </form>
 	</h1>
       </div>
@@ -112,14 +50,50 @@
       </div>
     </div>
     
-    <!-- page 2 -->
-    
-    <!-- hiden with inline style / will be shown by jquery -->
-    <div id="page2" class="dt vh-100 w-100 absolute top-0 left-0" style="display:none">
-      <div class="dtc v-mid tc light-green bg-dark-blue">
-	<h1 class="f3 f1-ns">
-	  page 2
-	</h1>
+    <!-- play session #1 -->
+    <div id="play1" class="vh-100 w-100 absolute top-0 left-0 bg-dark-blue" style="display:none">
+      <div class="mw7 center min-h-100 h-auto flex flex-wrap flex-column justify-around items-center">
+	<div class="h1 flex-auto"></div><!-- gap -->
+	<div class="h3 flex-auto">
+	  <!-- Created with Inkscape (http://www.inkscape.org/) -->
+	  <svg
+	      id="playbtn"
+	      width="86.934525mm"
+	      height="86.934525mm"
+	      viewBox="0 0 86.934525 86.934525">
+	    <g
+		transform="translate(-61.532738,-105.03274)"
+		style="display:inline">
+	      <circle
+		  id="path10"
+		  cx="105"
+		  cy="148.5"
+		  r="43.467262"
+		  style="stroke-width:0.26458332;fill:#00ffff;opacity:1" />
+	      <!-- play mark -->
+	      <path
+		  id="path4493"
+		  style="fill:#0000ff;opacity:1"
+		  d="m 88.000004,172.1046 -10e-7,-23.6046 10e-7,-23.6046 20.442186,11.8023 20.44219,11.8023 -20.44219,11.8023 z" />
+	      <!-- pause mark -->
+	      <rect
+		  id="rect8475"
+		  style="fill:#ffff00;opacity:1"
+		  width="9.8273773"
+		  height="47.209202"
+		  x="89.223961"
+		  y="124.70641" />
+	      <rect
+		  id="rect8475-3"
+		  style="display:inline;fill:#ffff00;opacity:1"
+		  width="9.8273773"
+		  height="47.209202"
+		  x="110.94866"
+		  y="125.08439" />
+	    </g>
+	  </svg>
+	</div>
+	<div class="h1 flex-auto"></div><!-- gap -->
       </div>
     </div>
     
