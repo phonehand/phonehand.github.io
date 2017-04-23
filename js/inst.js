@@ -7,7 +7,7 @@ $( document ).ready(function() {
 
     // connect server
     var oscPort = new osc.WebSocketPort({
-    	url: "wss://52.78.239.112:5300", // amazonaws ec2 node.js server
+    	url: "ws://52.78.239.112:5300", // amazonaws ec2 node.js server
     	metadata: true
     });
 
