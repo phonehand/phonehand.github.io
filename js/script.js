@@ -42,61 +42,61 @@ $( document ).ready(function() {
 	$("#loading").show();
 
 	//load data
-	reserveseat();
+	// reserveseat();
     });
 
-    // loading page
+    // // loading page
     
-    var player1;
-    function reserveseat()
-    {
-	player1 = new Tone.Player({ "url" : "./audio/01.mp3" }).toMaster();
-	Tone.Buffer.on("load", function(){
-	    $("#loading").fadeOut(500);
-	    $("#play1").fadeIn(500);
-	}.bind(this));
-	//-->resolve scoping issues.. : https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/
-    }
+    // var player1;
+    // function reserveseat()
+    // {
+    // 	player1 = new Tone.Player({ "url" : "./audio/01.mp3" }).toMaster();
+    // 	Tone.Buffer.on("load", function(){
+    // 	    $("#loading").fadeOut(500);
+    // 	    $("#play1").fadeIn(500);
+    // 	}.bind(this));
+    // 	//-->resolve scoping issues.. : https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/
+    // }
 
-    // player session #1
+    // // player session #1
 
-    //initial state
-    var playing1 = 0;
-    $('#playbtn #path4493').show();
-    $('#playbtn #rect8475').hide();
-    $('#playbtn #rect8475-3').hide();
+    // //initial state
+    // var playing1 = 0;
+    // $('#playbtn #path4493').show();
+    // $('#playbtn #rect8475').hide();
+    // $('#playbtn #rect8475-3').hide();
     
-    $('#playbtn').click(function() {
-	if (playing1 == 0) {
-	    playing1 = 1;
-	    playstart1();
-	} else if (playing1 == 1) {
-	    playing1 = 0;
-	    playstop1();
-	}
-    });
+    // $('#playbtn').click(function() {
+    // 	if (playing1 == 0) {
+    // 	    playing1 = 1;
+    // 	    playstart1();
+    // 	} else if (playing1 == 1) {
+    // 	    playing1 = 0;
+    // 	    playstop1();
+    // 	}
+    // });
 
-    function playstart1() {
-	player1.start();
-	// btn shape change.
-	$('#playbtn #path4493').hide();
-	$('#playbtn #rect8475').show();
-	$('#playbtn #rect8475-3').show();
+    // function playstart1() {
+    // 	player1.start();
+    // 	// btn shape change.
+    // 	$('#playbtn #path4493').hide();
+    // 	$('#playbtn #rect8475').show();
+    // 	$('#playbtn #rect8475-3').show();
 
-	var p1id = setInterval(function() {
-	    if(player1.state == "stopped") {
-		playstop1();
-		clearInterval(p1id);
-	    }
-	}, 500);
-    }
+    // 	var p1id = setInterval(function() {
+    // 	    if(player1.state == "stopped") {
+    // 		playstop1();
+    // 		clearInterval(p1id);
+    // 	    }
+    // 	}, 500);
+    // }
 
-    function playstop1() {
-	player1.stop();
-	// btn shape change.
-	$('#playbtn #path4493').show();
-	$('#playbtn #rect8475').hide();
-	$('#playbtn #rect8475-3').hide();
-    }
+    // function playstop1() {
+    // 	player1.stop();
+    // 	// btn shape change.
+    // 	$('#playbtn #path4493').show();
+    // 	$('#playbtn #rect8475').hide();
+    // 	$('#playbtn #rect8475-3').hide();
+    // }
 
 });
