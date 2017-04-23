@@ -41,6 +41,8 @@ $( document ).ready(function() {
 	$("#resvseat").hide();
 	$("#loading").show();
 
+	
+
 	//load data
 	// reserveseat();
     });
